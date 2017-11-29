@@ -5,6 +5,7 @@ jdk: oraclejdk8
 dist: precise
 # Use the Travis Container-Based Infrastructure
 sudo: false
+install: ant deps
 
 android:
   components:
