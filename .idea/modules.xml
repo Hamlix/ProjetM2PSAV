@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ProjetM2PSAV.iml" filepath="$PROJECT_DIR$/ProjetM2PSAV.iml" />
+      <module fileurl="file://C:\Users\nviller\StudioProjects\ProjetM2PSAV\.idea\ProjetM2PSAV.iml" filepath="C:\Users\nviller\StudioProjects\ProjetM2PSAV\.idea\ProjetM2PSAV.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
