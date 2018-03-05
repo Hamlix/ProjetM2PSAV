@@ -2,4 +2,6 @@
     <string name="app_name">ProjetM2PSAV</string>
     <string name="drawer_opened">Opened</string>
     <string name="drawer_closed">Closed</string>
+    <string name="facebook_app_id">1492207237571556</string>
+    <string name="fb_login_protocol_scheme">fb1492207237571556</string>
 </resources>
