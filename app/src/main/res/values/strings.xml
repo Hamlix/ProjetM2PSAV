@@ -2,6 +2,9 @@
     <string name="app_name">ProjetM2PSAV</string>
     <string name="drawer_opened">Opened</string>
     <string name="drawer_closed">Closed</string>
+    <string name="facebook_app_id">1492207237571556</string>
+    <string name="fb_login_protocol_scheme">fb1492207237571556</string>
+
 
     <!-- Signup -->
     <string name="sign_up_button_label">Sign Up</string>
@@ -36,5 +39,6 @@
     <string name="create_event_date_fin">Date de Fin</string>
     <string name="create_event_heure_fin">Heure de Fin</string>
     <string name="create_event_submit_date_error_message">La date de fin ne peut pas être antérieure à celle du début !</string>
+
 
 </resources>

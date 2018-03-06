@@ -1,5 +1,7 @@
 package com.example.nviller.projetm2psav.activities;
 
+
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +13,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.nviller.projetm2psav.R;
-import com.example.nviller.projetm2psav.dao.DAOUser;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.example.nviller.projetm2psav.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by nviller on 19/01/2018.
@@ -34,10 +36,24 @@ public class CreateUserActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DAOUser daoUser;
 
+    private EditText emailUser;
+    private EditText mdpUser;
+    private EditText loginUser;
+    private EditText firstnameUser;
+    private EditText lastnameUser;
+    private User newUser;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
+   // private DatabaseReference database;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_user);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        //database = FirebaseDatabase.getInstance().getReference("users");
+
 
         editTextFirstName = (EditText) findViewById(R.id.create_user_first_name);
         editTextLastName = (EditText) findViewById(R.id.create_user_last_name);
@@ -59,12 +75,12 @@ public class CreateUserActivity extends AppCompatActivity {
                 final String email = editTextEmail.getText().toString().trim();
                 final String password = editTextPassword.getText().toString().trim();
 
-                if ( !daoUser.validateUser(email, password, firstName, lastName)) {
-                    showAlertDialogError(R.string.signup_error_title,
-                            getResources().getString(R.string.signup_error_message));
-                } else {
-                    signUp(email, password, firstName, lastName,pseudo);
-                }
+
+    mFirebaseAuth.createUserWithEmailAndPassword(emailUser.getText().toString().trim(),mdpUser.getText().toString().trim());
+
+
+            }
+
 
             }
         });

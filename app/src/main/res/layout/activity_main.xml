@@ -24,10 +24,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
             android:gravity="top|center_vertical|center_horizontal|center"
-            android:text="Bienvenue dans FunEvent"
-            android:textSize="50sp"
-            android:layout_marginTop="10dp"/>
+            android:text="Bienvenue dans notre appli"
+            android:textSize="50dp" />
+        <EditText
+            android:id="@+id/email_user_ma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Email" />
 
+        <EditText
+            android:id="@+id/password_user_ma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Mot de passe" />
         <Button
             android:id="@+id/activity_main_login_button"
             android:layout_width="150dp"
@@ -43,6 +56,14 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="Créer un compte"/>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
 
 
     </LinearLayout>
