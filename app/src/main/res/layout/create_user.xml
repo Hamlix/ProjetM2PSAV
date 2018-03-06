@@ -10,7 +10,23 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/cu_email_user"
+            android:id="@+id/create_user_first_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Prénom"
+            android:inputType="textPersonName"/>
+
+        <EditText
+            android:id="@+id/create_user_last_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nom"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/create_user_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -18,7 +34,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/cu_password_user"
+            android:id="@+id/create_user_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -26,31 +42,15 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/cu_login_user"
+            android:id="@+id/create_user_pseudo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Login"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/cu_firstname_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Prénom"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/cu_lastname_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nom"
+            android:hint="¨Pseudo"
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/cu_create_user"
+            android:id="@+id/create_user_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Créer" />

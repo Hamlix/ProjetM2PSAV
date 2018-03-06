@@ -12,9 +12,9 @@ import com.example.nviller.projetm2psav.R;
  * Created by mouna on 16/01/2018.
  */
 
-public class Fragment1 extends Fragment implements View.OnClickListener{
+public class GestionEvent extends Fragment implements View.OnClickListener{
 
-    public Fragment1(){
+    public GestionEvent(){
 
     }
 
@@ -22,9 +22,9 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
 
     }
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View vf = inflater.inflate(R.layout.fragment1, container, false);
+        View vf = inflater.inflate(R.layout.activity_gestion_event, container, false);
         return  vf;
     }
+
 }

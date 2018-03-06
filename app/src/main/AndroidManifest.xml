@@ -37,6 +37,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.CreateUserActivity" />
+        <activity android:name=".activities.LoginActivity"/>
+        <activity android:name=".activities.GestionEventActivity"/>
+        <activity android:name=".activities.CreateEventActivity"/>
     </application>
 
 </manifest>

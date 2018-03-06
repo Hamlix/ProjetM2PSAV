@@ -1,10 +1,16 @@
 package com.example.nviller.projetm2psav.activities;
 
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.nviller.projetm2psav.R;
 import com.example.nviller.projetm2psav.model.User;
@@ -17,7 +23,18 @@ import com.google.firebase.auth.FirebaseUser;
  * Created by nviller on 19/01/2018.
  */
 
-public class CreateUserActivity extends Activity {
+public class CreateUserActivity extends AppCompatActivity {
+
+    protected EditText editTextFirstName;
+    protected EditText editTextLastName;
+    protected EditText editTextPseudo;
+    protected EditText editTextPassword;
+    protected EditText editTextEmail;
+    protected Button buttonSignUp;
+    //protected User newUser;
+
+    private FirebaseAuth firebaseAuth;
+    private DAOUser daoUser;
 
     private EditText emailUser;
     private EditText mdpUser;
@@ -38,26 +55,65 @@ public class CreateUserActivity extends Activity {
         //database = FirebaseDatabase.getInstance().getReference("users");
 
 
-        emailUser = (EditText) findViewById(R.id.cu_email_user);
-        mdpUser = (EditText) findViewById(R.id.cu_password_user);
-        loginUser = (EditText) findViewById(R.id.cu_login_user);
-        firstnameUser = (EditText) findViewById(R.id.cu_firstname_user);
-        lastnameUser = (EditText) findViewById(R.id.cu_lastname_user);
+        editTextFirstName = (EditText) findViewById(R.id.create_user_first_name);
+        editTextLastName = (EditText) findViewById(R.id.create_user_last_name);
+        editTextPseudo = (EditText) findViewById(R.id.create_user_pseudo);
+        editTextEmail = (EditText) findViewById(R.id.create_user_email);
+        editTextPassword = (EditText) findViewById(R.id.create_user_password);
+        buttonSignUp = (Button) findViewById(R.id.create_user_sign_up);
 
-        final Button buttonCreateUser = (Button) findViewById(R.id.cu_create_user);
-        buttonCreateUser.setOnClickListener(new View.OnClickListener() {
+        daoUser = DAOUser.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        buttonSignUp.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                newUser = new User(emailUser.getText().toString(),mdpUser.getText().toString(),loginUser.getText().toString(),firstnameUser.getText().toString(),lastnameUser.getText().toString());
-                System.out.println(newUser.getEmailUser());
+                final String firstName  = editTextFirstName.getText().toString().trim();
+                final String lastName   = editTextLastName.getText().toString().trim();
+                final String pseudo   = editTextPseudo.getText().toString().trim();
+                final String email = editTextEmail.getText().toString().trim();
+                final String password = editTextPassword.getText().toString().trim();
+
 
     mFirebaseAuth.createUserWithEmailAndPassword(emailUser.getText().toString().trim(),mdpUser.getText().toString().trim());
 
 
             }
 
+
+            }
         });
 
     }
+
+    public void showAlertDialogError(int title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setTitle(title)
+                .setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public void signUp(final String email, final String password,
+                       final String firstName, final String lastName, final String pseudo) {
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(CreateUserActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            daoUser.createUser(task.getResult().getUser().getUid(), email, firstName, lastName);
+                            startActivity(intent);
+                            Toast.makeText(getApplicationContext(), getString(R.string.signup_toast_connected), Toast.LENGTH_LONG).show();
+                        } else {
+                            showAlertDialogError(R.string.signup_error_title, task.getException().getMessage());
+                        }
+                    }
+                });
+    }
+
 }
